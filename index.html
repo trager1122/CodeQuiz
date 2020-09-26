@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Coding Quiz</title>
+  </head>
+  <body>
+    <!-- Stat Bar Layout -->
+    <div class="container-xl mb-5" id="stat-bar">
+        <div class="row">
+            <div class="col col-xl-2 ml-0 p-0">
+                <h5 class="float-left" id="high-scores">View High Scores</h5>
+            </div>
+            <div class="col col-xl-8"></div>
+            <div class="col col-xl-2 mr-0 p-0">
+                <h5 class="float-right" id="timer">Timer: 75</h5>
+            </div>
+        </div>
+    </div>
+    <!-- Question Container Layout -->
+    <div class="container-xl">
+        <div class="row mb-5">
+            <div class="col col-xl-3"></div>
+            <div class="col col-xl-6 justify-content-center" id="question-box">
+                <h5>Coding Quiz</h5>
+                <p>This is a quiz evaluating your knowledge of HTML, CSS, Bootstrap, JavaScript, and JQuery</p>
+                <button type="button" id="start">Start</button>
+            </div>
+            <div class="col col-xl-3"></div>
+        </div>
+    <!-- Response Box for Whether Questions are Answered Correctly or Incorrectly -->
+        <div class="row">
+            <div class="col col-xl-3"></div>
+            <div class="col col-xl-6 justify-content-center" id="response-box"></div>
+            <div class="col col-xl-3"></div>
+        </div>
+    </div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
