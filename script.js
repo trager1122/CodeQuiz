@@ -51,22 +51,6 @@ var secondsLeft = QuestionBank.length * 5;
 var timeEl = document.getElementById("timer");
 timeEl.textContent = "Timer: " + secondsLeft;
 
-function setTime() {
-  var timerInterval = setInterval(function () {
-    
-    timeEl.textContent = "Timer: " + secondsLeft;
-
-    if (secondsLeft==0){
-      clearInterval(timerInterval);
-      endQuiz();
-    }
-    secondsLeft--;
-  }, 1000);
-}
-
-function sendMessage() {
-  responseDiv.textContent = "Time's up!";
-}
 
 // Event for displaying questions to question div and evaluating correct response
 var startEl = document.getElementById("start");
@@ -79,9 +63,19 @@ var responseDiv = document.getElementById("response-display");
 
 startEl.addEventListener("click", function () {
   startEl.remove();
-  setTime();
+  var timerInterval = setInterval(function () {
+    
+    timeEl.textContent = "Timer: " + secondsLeft;
+  
+    if (secondsLeft==0 || currentQ===QuestionBank.length){
+      clearInterval(timerInterval);
+      return endQuiz;
+    }
+    secondsLeft--;
+  }, 1000);
   displayQuestion();
 });
+
 
 function displayQuestion() {
   questionEl.textContent = QuestionBank[currentQ].question;
@@ -96,7 +90,6 @@ var answer;
 responseEl.addEventListener("click", function (event) {
   if (event.target.matches("p")) {
     answer = event.target.id;
-    console.log(QuestionBank[currentQ].correctAnswer)
     if (answer === QuestionBank[currentQ].correctAnswer) {
       secondsLeft = secondsLeft + 5;
       responseDiv.textContent = "That is correct!!!";
@@ -106,27 +99,34 @@ responseEl.addEventListener("click", function (event) {
       responseDiv.textContent = "That is incorrect.";
       currentQ++;
     }
-    if (currentQ === QuestionBank.length {
+    if (currentQ === QuestionBank.length) {
       endQuiz();
     } else {
       displayQuestion();
     }
-    function endQuiz() {
-      while (responseEl.hasChildNodes()) {
-        responseEl.removeChild(responseEl.firstChild);
-      }
+  }
+  function endQuiz() {
+//Clearing or changing the question display or response elements after quiz is complete
+    userScore=secondsLeft;
+    questionEl.textContent = "Quiz completed!";
+    answer1El.textContent = "";
+    answer2El.textContent = "Your final score is " + userScore;
+    answer3El.textContent = "";
+    answer4El.textContent = "";
+
+    //Creating the input elements to collect
+    var userInitials = document.createElement("input");
+    answer4El.textContent="User Initials";
+    userInitials.setAttribute("type", "text");
+    answer4El.appendChild(userInitials);
+    var submit = document.createElement("button");
+    submit.innerHTML = "Submit";
+    answer4El.appendChild(submit);
+    responseDiv.textContent="";
+    submit.addEventListener("click", function (){
+      localStorage.setItem("User", userInitials);
+      localStorage.setItem("Score", userScore);
+      window.location.href = "scores.html";
     }
   }
-});
-
-// onclick for the class response
-// get the id of the element clicked
-// compare the id clicke questionBat[curr].correct
-// penality if wrong decrease the timer    timer time = number of question * 15
-
-// increase currentQ  3 === lenght go to end
-// verify if is no more question (comparing the currectQ with the lenght of the QuestionsBank.length ) then you go t
-//  if is not the last one go back to the displayQuestion
-//function displayQuestion()
-
-// function endQuiz()   clear the question area, stop the timer, show the form to get the initials
+  })
