@@ -115,7 +115,6 @@ responseEl.addEventListener("click", function (event) {
       while (responseEl.hasChildNodes()) {
         responseEl.removeChild(responseEl.firstChild);
       }
-    if (secondsLeft===0)
     }
   }
 });
