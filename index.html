@@ -20,7 +20,7 @@
             </div>
             <div class="col col-xl-8"></div>
             <div class="col col-xl-2 mr-0 p-0">
-                <h5 class="float-right" id="timer">Timer: 75</h5>
+                <h5 class="float-right" id="timer"></h5>
             </div>
         </div>
     </div>
@@ -28,22 +28,24 @@
     <div class="container-xl">
         <div class="row mb-5">
             <div class="col col-xl-3"></div>
-            <div class="col col-xl-6 justify-content-center" id="question-box">
-                <h5>Coding Quiz</h5>
-                <p>This is a quiz evaluating your knowledge of HTML, CSS, Bootstrap, JavaScript, and JQuery</p>
-                <button type="button" id="start">Start</button>
+            <div class="response col col-xl-6 justify-content-center">
+                <h5 id="question-display">Coding Quiz</h5>
+                <p id="a">This is a quiz evaluating your knowledge of HTML, CSS, Bootstrap, JavaScript, and JQuery</p>
+                <p id="b"></p>
+                <p id="c"></p>
+                <p id="d"></p>
+            <button type="button" id="start">Start</button>
             </div>
             <div class="col col-xl-3"></div>
         </div>
     <!-- Response Box for Whether Questions are Answered Correctly or Incorrectly -->
         <div class="row">
             <div class="col col-xl-3"></div>
-            <div class="col col-xl-6 justify-content-center" id="response-box"></div>
+            <div class="col col-xl-6 justify-content-center" id="response-display"></div>
             <div class="col col-xl-3"></div>
         </div>
     </div>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!-- JavaScript-->
     <script src="./script.js"></script>
   </body>
 </html>
