@@ -102,36 +102,36 @@ choiceEl.addEventListener("click", function (event) {
       displayQuestion();
     }
   }
-
-  function endQuiz() {
-    //Clearing or changing the question display or response elements after quiz is complete
-    userScore = secondsLeft;
-    questionEl.textContent = "Quiz completed!";
-    answer1El.textContent = "";
-    answer2El.textContent = "Your final score is " + userScore;
-    answer3El.textContent = "";
-    answer4El.textContent = "";
-
-    //Creating the input elements to collect
-    var userInitials = document.createElement("input");
-    answer4El.textContent = "User Initials";
-    userInitials.setAttribute("type", "text");
-    answer4El.appendChild(userInitials);
-    var submit = document.createElement("button");
-    submit.innerHTML = "Submit";
-    answer4El.appendChild(submit);
-    responseDiv.textContent = "";
-
-    //Storing inputs to local storage via an array of objects
-    submit.addEventListener("submit", function () {
-      var scoresEntered = [];
-      var quizRecord = {};
-      quizRecord.push(userInitials);
-      quizRecord.push(userScore);
-      scoresEntered.push(quizRecord);
-      localStorage.setItem("scores", JSON.stringify(scoresEntered));
-      window.location.href = "scores.html";
-    });
-    
-  }
 });
+
+function endQuiz() {
+  //Clearing or changing the question display or response elements after quiz is complete
+  userScore = secondsLeft;
+  questionEl.textContent = "Quiz completed!";
+  answer1El.textContent = "";
+  answer2El.textContent = "Your final score is " + userScore;
+  answer3El.textContent = "";
+  answer4El.textContent = "";
+
+  //Creating the input elements to collect
+  var userInitials = document.createElement("input");
+  answer4El.textContent = "User Initials";
+  userInitials.setAttribute("type", "text");
+  answer4El.appendChild(userInitials);
+  var submit = document.createElement("button");
+  submit.innerHTML = "Submit";
+  answer4El.appendChild(submit);
+  responseDiv.textContent = "";
+
+  //Storing inputs to local storage via an array of objects
+  submit.addEventListener("submit", function () {
+    var scoresEntered = [];
+    var quizRecord = {};
+    quizRecord.push(userInitials);
+    quizRecord.push(userScore);
+    scoresEntered.push(quizRecord);
+    localStorage.setItem("scores", JSON.stringify(scoresEntered));
+    window.location.href = "scores.html";
+  });
+  
+}
