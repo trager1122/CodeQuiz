@@ -16,21 +16,21 @@ var QuestionBank = [
       "Which of the following functions can be used select any node in the DOM?",
     answers: {
       a: "getElementbyid",
-      b: "getElementsbyClass",
+      b: "querySelector",
       c: "setElementType",
-      d: "querySelector",
+      d: "GetElementsbyClass",
     },
-    correctAnswer: "d",
+    correctAnswer: "b",
   },
   {
-    question: "Which tool can you use to ensure code quality?",
+    question: "Which of the following provides a grid framework for CSS page layout?",
     answers: {
-      a: "Angular",
+      a: "Node.js",
       b: "jQuery",
-      c: "RequireJS",
-      d: "ESLint",
+      c: "Bootstrap",
+      d: "React.js",
     },
-    correctAnswer: "d",
+    correctAnswer: "c",
   },
 ];
 
@@ -40,9 +40,9 @@ var currentQ = 0;
 // Scorekeeper
 var userScore = 0;
 
-// Event for displaying high scores
-var highScoresEl = document.getElementById("high-scores");
-highScoresEl.addEventListener("click", function () {
+// Event for displaying user scores
+var userScoresEl = document.getElementById("view-scores");
+userScoresEl.addEventListener("click", function () {
   window.location.href = "scores.html";
 });
 
@@ -50,7 +50,6 @@ highScoresEl.addEventListener("click", function () {
 var secondsLeft = QuestionBank.length * 5;
 var timeEl = document.getElementById("timer");
 timeEl.textContent = "Timer: " + secondsLeft;
-
 
 // Event for displaying questions to question div and evaluating correct response
 var startEl = document.getElementById("start");
@@ -64,18 +63,16 @@ var responseDiv = document.getElementById("response-display");
 startEl.addEventListener("click", function () {
   startEl.remove();
   var timerInterval = setInterval(function () {
-    
     timeEl.textContent = "Timer: " + secondsLeft;
-  
-    if (secondsLeft==0 || currentQ===QuestionBank.length){
+
+    if (secondsLeft == 0 || currentQ===QuestionBank.length) {
+      endQuiz ();
       clearInterval(timerInterval);
-      return endQuiz;
     }
     secondsLeft--;
   }, 1000);
   displayQuestion();
 });
-
 
 function displayQuestion() {
   questionEl.textContent = QuestionBank[currentQ].question;
@@ -85,9 +82,9 @@ function displayQuestion() {
   answer4El.textContent = QuestionBank[currentQ].answers.d;
 }
 
-var responseEl = document.querySelector(".response");
+var choiceEl = document.querySelector(".response");
 var answer;
-responseEl.addEventListener("click", function (event) {
+choiceEl.addEventListener("click", function (event) {
   if (event.target.matches("p")) {
     answer = event.target.id;
     if (answer === QuestionBank[currentQ].correctAnswer) {
@@ -105,9 +102,10 @@ responseEl.addEventListener("click", function (event) {
       displayQuestion();
     }
   }
+
   function endQuiz() {
-//Clearing or changing the question display or response elements after quiz is complete
-    userScore=secondsLeft;
+    //Clearing or changing the question display or response elements after quiz is complete
+    userScore = secondsLeft;
     questionEl.textContent = "Quiz completed!";
     answer1El.textContent = "";
     answer2El.textContent = "Your final score is " + userScore;
@@ -116,17 +114,24 @@ responseEl.addEventListener("click", function (event) {
 
     //Creating the input elements to collect
     var userInitials = document.createElement("input");
-    answer4El.textContent="User Initials";
+    answer4El.textContent = "User Initials";
     userInitials.setAttribute("type", "text");
     answer4El.appendChild(userInitials);
     var submit = document.createElement("button");
     submit.innerHTML = "Submit";
     answer4El.appendChild(submit);
-    responseDiv.textContent="";
-    submit.addEventListener("click", function (){
-      localStorage.setItem("User", userInitials);
-      localStorage.setItem("Score", userScore);
+    responseDiv.textContent = "";
+
+    //Storing inputs to local storage via an array of objects
+    submit.addEventListener("submit", function () {
+      var scoresEntered = [];
+      var quizRecord = {};
+      quizRecord.push(userInitials);
+      quizRecord.push(userScore);
+      scoresEntered.push(quizRecord);
+      localStorage.setItem("scores", JSON.stringify(scoresEntered));
       window.location.href = "scores.html";
-    }
+    });
+    
   }
-  })
+});
