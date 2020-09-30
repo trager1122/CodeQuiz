@@ -1,48 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
 
     <title>Coding Quiz</title>
   </head>
   <body>
     <!-- Stat Bar Layout -->
     <div class="container-lg mb-5" id="stat-bar">
-        <div class="row">
-            <div class="col col-xl-2 ml-0 p-0">
-                <h5 class="float-left" id="view-scores">View Scores</h5>
-            </div>
-            <div class="col col-xl-8"></div>
-            <div class="col col-xl-2 mr-0 p-0">
-                <h5 class="float-right" id="timer"></h5>
-            </div>
+      <div class="row">
+        <div class="col col-xl-2 ml-0 p-0">
+          <h5 class="float-left" id="view-scores">View Scores</h5>
         </div>
+        <div class="col col-xl-8"></div>
+        <div class="col col-xl-2 mr-0 p-0">
+          <h5 class="float-right" id="timer"></h5>
+        </div>
+      </div>
     </div>
     <!-- Question Container Layout -->
     <div class="container-xl">
-        <div class="row mb-5">
-            <div class="col col-xl-3"></div>
-            <div class="response col col-xl-6 justify-content-center">
-                <h5 id="question-display">Coding Quiz</h5>
-                <p id="a">This is a quiz evaluating your knowledge of HTML, CSS, Bootstrap, JavaScript, and JQuery</p>
-                <p id="b"></p>
-                <p id="c"></p>
-                <p id="d"></p>
-            <button type="button" id="start">Start</button>
-            </div>
-            <div class="col col-xl-3"></div>
+      <div class="row mb-5">
+        <div class="col col-xl-3"></div>
+        <div class="response col col-xl-6 justify-content-center">
+          <h5 id="question-display">Coding Quiz</h5>
+          <p id="a">
+            This is a quiz evaluating your knowledge of HTML, CSS, Bootstrap,
+            JavaScript, and JQuery
+          </p>
+          <p id="b"></p>
+          <p id="c"></p>
+          <p id="d"></p>
+          <button type="button" id="start">Start</button>
         </div>
-    <!-- Response Box for Whether Questions are Answered Correctly or Incorrectly -->
-        <div class="row">
-            <div class="col col-xl-3"></div>
-            <div class="col col-xl-6 justify-content-center" id="response-display"></div>
-            <div class="col col-xl-3"></div>
-        </div>
+        <div class="col col-xl-3"></div>
+      </div>
+      <!-- Response Box for Whether Questions are Answered Correctly or Incorrectly -->
+      <div class="row">
+        <div class="col col-xl-3"></div>
+        <div
+          class="col col-xl-6 justify-content-center"
+          id="response-display"
+        ></div>
+        <div class="col col-xl-3"></div>
+      </div>
     </div>
     <!-- JavaScript-->
     <script src="./script.js"></script>

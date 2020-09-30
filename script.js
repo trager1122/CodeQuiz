@@ -23,7 +23,8 @@ var QuestionBank = [
     correctAnswer: "b",
   },
   {
-    question: "Which of the following provides a grid framework for CSS page layout?",
+    question:
+      "Which of the following provides a grid framework for CSS page layout?",
     answers: {
       a: "Node.js",
       b: "jQuery",
@@ -65,8 +66,8 @@ startEl.addEventListener("click", function () {
   var timerInterval = setInterval(function () {
     timeEl.textContent = "Timer: " + secondsLeft;
 
-    if (secondsLeft == 0 || currentQ===QuestionBank.length) {
-      endQuiz ();
+    if (secondsLeft == 0 || currentQ === QuestionBank.length) {
+      endQuiz();
       clearInterval(timerInterval);
     }
     secondsLeft--;
@@ -75,63 +76,63 @@ startEl.addEventListener("click", function () {
 });
 
 function displayQuestion() {
-  questionEl.textContent = QuestionBank[currentQ].question;
-  answer1El.textContent = QuestionBank[currentQ].answers.a;
-  answer2El.textContent = QuestionBank[currentQ].answers.b;
-  answer3El.textContent = QuestionBank[currentQ].answers.c;
-  answer4El.textContent = QuestionBank[currentQ].answers.d;
-}
-
-var choiceEl = document.querySelector(".response");
-var answer;
-choiceEl.addEventListener("click", function (event) {
-  if (event.target.matches("p")) {
-    answer = event.target.id;
-    if (answer === QuestionBank[currentQ].correctAnswer) {
-      secondsLeft = secondsLeft + 5;
-      responseDiv.textContent = "That is correct!!!";
-      currentQ++;
-    } else {
-      secondsLeft = secondsLeft - 5;
-      responseDiv.textContent = "That is incorrect.";
-      currentQ++;
-    }
-    if (currentQ === QuestionBank.length) {
-      endQuiz();
-    } else {
-      displayQuestion();
-    }
+    questionEl.textContent = QuestionBank[currentQ].question;
+    answer1El.textContent = QuestionBank[currentQ].answers.a;
+    answer2El.textContent = QuestionBank[currentQ].answers.b;
+    answer3El.textContent = QuestionBank[currentQ].answers.c;
+    answer4El.textContent = QuestionBank[currentQ].answers.d;
   }
-});
 
-function endQuiz() {
-  //Clearing or changing the question display or response elements after quiz is complete
-  userScore = secondsLeft;
-  questionEl.textContent = "Quiz completed!";
-  answer1El.textContent = "";
-  answer2El.textContent = "Your final score is " + userScore;
-  answer3El.textContent = "";
-  answer4El.textContent = "";
+  var choiceEl = document.querySelector(".response");
+  var answer;
 
-  //Creating the input elements to collect
-  var userInitials = document.createElement("input");
-  answer4El.textContent = "User Initials";
-  userInitials.setAttribute("type", "text");
-  answer4El.appendChild(userInitials);
-  var submit = document.createElement("button");
-  submit.innerHTML = "Submit";
-  answer4El.appendChild(submit);
-  responseDiv.textContent = "";
-
-  //Storing inputs to local storage via an array of objects
-  submit.addEventListener("submit", function () {
-    var scoresEntered = [];
-    var quizRecord = {};
-    quizRecord.push(userInitials);
-    quizRecord.push(userScore);
-    scoresEntered.push(quizRecord);
-    localStorage.setItem("scores", JSON.stringify(scoresEntered));
-    window.location.href = "scores.html";
+  choiceEl.addEventListener("click", function (event) {
+    if (event.target.matches("p")) {
+      answer = event.target.id;
+      if (answer === QuestionBank[currentQ].correctAnswer) {
+        secondsLeft = secondsLeft + 5;
+        responseDiv.textContent = "That is correct!!!";
+        currentQ++;
+      } else {
+        secondsLeft = secondsLeft - 5;
+        responseDiv.textContent = "That is incorrect.";
+        currentQ++;
+      }
+      if (currentQ === QuestionBank.length) {
+        endQuiz();
+      } else {
+        displayQuestion();
+      }
+    }
   });
-  
-}
+
+  function endQuiz() {
+    //Clearing or changing the question display or response elements after quiz is complete
+    userScore = secondsLeft;
+    questionEl.textContent = "Quiz completed!";
+    answer1El.textContent = "";
+    answer2El.textContent = "Your final score is " + userScore;
+    answer3El.textContent = "";
+    answer4El.textContent = "";
+
+    //Creating the input elements to collect
+    var userInitials = document.createElement("input");
+    answer4El.textContent = "User Initials";
+    userInitials.setAttribute("type", "text");
+    answer4El.appendChild(userInitials);
+    var submit = document.createElement("button");
+    submit.innerHTML = "Submit";
+    answer4El.appendChild(submit);
+    responseDiv.textContent = "";
+
+    //Storing inputs to local storage via an array of objects
+    submit.addEventListener("click", function () {
+      var scoresEntered = [];
+      var quizRecord = {};
+      quizRecord.push(userInitials);
+      quizRecord.push(userScore);
+      scoresEntered.push(quizRecord);
+      localStorage.setItem("scores", JSON.stringify(scoresEntered));
+      window.location.href = "scores.html";
+    });
+  }
