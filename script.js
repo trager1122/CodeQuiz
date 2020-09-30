@@ -127,12 +127,14 @@ function displayQuestion() {
 
     //Storing inputs to local storage via an array of objects
     submit.addEventListener("click", function () {
-      var scoresEntered = [];
+      var scoresEntered = JSON.parse(localStorage.getItem("scores")) || [];
+
       var quizRecord = {};
-      quizRecord.push(userInitials);
-      quizRecord.push(userScore);
+      quizRecord.initials = userInitials;
+      quizRecord.score = userScore;
       scoresEntered.push(quizRecord);
       localStorage.setItem("scores", JSON.stringify(scoresEntered));
+      
       window.location.href = "scores.html";
     });
   }
