@@ -2,7 +2,7 @@
 var QuestionBank = [
   {
     question:
-      "Which of the following are the major components of designing a web design?",
+      "Which of the following are the major components of designing a website?",
     answers: {
       a: "HTML",
       b: "CSS",
@@ -133,7 +133,7 @@ function displayQuestion() {
       var scoresEntered = JSON.parse(localStorage.getItem("scores")) || [];
 
       var quizRecord = {};
-      quizRecord.initials = userInitials;
+      quizRecord.initials = userInitials.value;
       quizRecord.score = userScore;
       scoresEntered.push(quizRecord);
       localStorage.setItem("scores", JSON.stringify(scoresEntered));
