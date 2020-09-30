@@ -61,6 +61,7 @@ var answer3El = document.getElementById("c");
 var answer4El = document.getElementById("d");
 var responseDiv = document.getElementById("response-display");
 
+//Starts the quiz and its timer
 startEl.addEventListener("click", function () {
   startEl.remove();
   var timerInterval = setInterval(function () {
@@ -75,6 +76,7 @@ startEl.addEventListener("click", function () {
   displayQuestion();
 });
 
+//Displays question and answer choices
 function displayQuestion() {
     questionEl.textContent = QuestionBank[currentQ].question;
     answer1El.textContent = QuestionBank[currentQ].answers.a;
@@ -86,6 +88,7 @@ function displayQuestion() {
   var choiceEl = document.querySelector(".response");
   var answer;
 
+  //Evaluation of user answer choice for correctness
   choiceEl.addEventListener("click", function (event) {
     if (event.target.matches("p")) {
       answer = event.target.id;

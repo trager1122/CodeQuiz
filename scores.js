@@ -2,11 +2,11 @@
 function displayScores (){
     var quizScores = [];
     quizScores=JSON.parse(localStorage.getItem("scores"));
-    sort((a, b) => { return a.score < b.score ? 1 : -1 } );    
-    console.log(quizScores);
-    var scoreDisplay = document.querySelector("scoreboard");
+    quizScores.sort((a, b) => { return a.score < b.score ? 1 : -1 } );    
+    var scoreDisplay = document.querySelector("#scores-list");
     for (var i=0; i < quizScores.length; i++){
-       scoreDisplay.appendChild(quizScores[i]); 
+       var scoresDisplayed=quizScores[i].initials + "-" + quizScores[i].score;
+       scoreDisplay.appendChild=(scoresDisplayed);
     }
 }
 
